@@ -26,6 +26,7 @@ public class Practice03Scale extends RelativeLayout {
         super(context, attrs, defStyleAttr);
     }
 
+    int pos = 0;
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -37,6 +38,18 @@ public class Practice03Scale extends RelativeLayout {
             @Override
             public void onClick(final View v) {
                 // TODO 在这里处理点击事件，通过 View.animate().scaleX/Y() 来让 View 放缩
+
+                if (pos == 0) {
+                    imageView.animate().scaleX(1.5f);
+                } else if (pos == 1) {
+                    imageView.animate().scaleX(1);
+                } else if (pos == 2) {
+                    imageView.animate().scaleY(0.5f);
+                } else if (pos == 3) {
+                    imageView.animate().scaleY(1);
+                }
+
+                pos = (pos + 1) % 4;
             }
         });
     }

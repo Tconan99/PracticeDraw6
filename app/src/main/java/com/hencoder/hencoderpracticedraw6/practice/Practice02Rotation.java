@@ -26,6 +26,7 @@ public class Practice02Rotation extends RelativeLayout {
         super(context, attrs, defStyleAttr);
     }
 
+    int pos = 0;
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -37,6 +38,22 @@ public class Practice02Rotation extends RelativeLayout {
             @Override
             public void onClick(final View v) {
                 // // TODO 在这里处理点击事件，通过 View.animate().rotation/X/Y() 来让 View 旋转
+
+                if (pos == 0) {
+                    imageView.animate().rotation(180);
+                } else if (pos == 1) {
+                    imageView.animate().rotation(0);
+                } else if (pos == 2) {
+                    imageView.animate().rotationX(180);
+                } else if (pos == 3) {
+                    imageView.animate().rotationX(0);
+                } else if (pos == 4) {
+                    imageView.animate().rotationY(180);
+                } else if (pos == 5) {
+                    imageView.animate().rotationY(0);
+                }
+                pos = (pos + 1) % 6;
+
             }
         });
     }

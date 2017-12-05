@@ -34,6 +34,7 @@ public class Practice01Translation extends RelativeLayout {
         super(context, attrs, defStyleAttr);
     }
 
+    int pos = 0;
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -49,6 +50,23 @@ public class Practice01Translation extends RelativeLayout {
             @Override
             public void onClick(final View v) {
                 // TODO 在这里处理点击事件，通过 View.animate().translationX/Y/Z() 来让 View 平移
+                if (pos == 0) {
+                    imageView.animate().translationX(dpToPixel(100));
+                } else if (pos == 1) {
+                    imageView.animate().translationX(dpToPixel(0));
+                } else if (pos == 2) {
+                    imageView.animate().translationY(dpToPixel(50));
+                } else if (pos == 3) {
+                    imageView.animate().translationY(dpToPixel(0));
+                } else if (pos == 4 && SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+                    imageView.animate().translationZ(dpToPixel(15));
+                } else if (pos == 5 && SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+                    imageView.animate().translationZ(dpToPixel(0));
+                }
+
+                pos = (pos + 1) % (SDK_INT > Build.VERSION_CODES.LOLLIPOP ? 6 : 4);
+
+
             }
         });
     }
